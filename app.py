@@ -15,7 +15,7 @@ def build_sidebar():
     tickers = [t+".SA" for t in tickers]
     start_date = st.date_input("De", format="DD/MM/YYYY", value=datetime(2022,1,2))
     end_date = st.date_input("Até", format="DD/MM/YYYY", value="today")
-
+    st.write('Developed by Marcio V.')
     if tickers:
         prices = yf.download(tickers, start=start_date, end=end_date)["Adj Close"]
         if len(tickers) == 1:
@@ -84,5 +84,6 @@ with st.sidebar:
     tickers, prices = build_sidebar()
 
 st.title('Mesa RV -BX investimentos-- IS')
+
 if tickers:
     build_main(tickers, prices)
