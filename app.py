@@ -6,6 +6,8 @@ import plotly.express as px
 from datetime import datetime
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.grid import grid
+import seaborn as sns
+
 
 
 def build_sidebar():
@@ -54,6 +56,9 @@ def build_main(tickers, prices):
     with col1:
         st.subheader("Performance dos ativos")
         st.line_chart(norm_prices, height=600)
+        
+        st.subheader("Série histórica")
+        st.dataframe(prices)
 
     with col2:
         st.subheader("Risco-Retorno")
@@ -76,8 +81,8 @@ def build_main(tickers, prices):
         fig.layout.yaxis.tickformat = ".0%"        
         fig.layout.coloraxis.colorbar.title = 'Sharpe'
         st.plotly_chart(fig, use_container_width=True)
+        st.subheader("Correlação")  
 
-        
 st.set_page_config(layout="wide")
 
 with st.sidebar:
