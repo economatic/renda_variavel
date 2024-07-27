@@ -6,6 +6,9 @@ import plotly.express as px
 from datetime import datetime
 from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_extras.grid import grid
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense, LSTM
 
 
 
@@ -87,7 +90,9 @@ def build_main(tickers, prices):
         fig.layout.yaxis.tickformat = ".0%"        
         fig.layout.coloraxis.colorbar.title = 'Sharpe'
         st.plotly_chart(fig, use_container_width=True)
-        st.subheader("Correlação")  
+        st.subheader("Correlação")
+
+  
 
 st.set_page_config(layout="wide")
 
